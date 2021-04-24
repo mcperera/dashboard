@@ -20,7 +20,7 @@ function Dashboard() {
       <button onClick={handleSignOut}>Sign Out</button> */}
       <NavBar />
       <Layout>
-        <Header />
+        <Header handleSignOut={handleSignOut} />
       </Layout>
     </div>
   );
