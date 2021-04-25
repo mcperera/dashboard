@@ -1,27 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { User } from "../";
-import { tab_line, seleted_tab } from "./UsersCard.module.css";
+import React, { useState } from "react";
+import { User, TabItem } from "../";
 
 const tabData = ["STAFF", "EMPLOYEE"];
 
-const TabItem = ({ label, selectTab, setSelectTab }) => {
-  return (
-    <div
-      className={`h-20 w-6/12 flex items-center justify-center ${
-        selectTab === label ? seleted_tab : tab_line
-      }`}
-      onClick={() => setSelectTab(label)}>
-      <h1
-        className={`text-lg font-bold ${
-          selectTab === label ? "text-red-600" : "text-gray-300"
-        }`}>
-        {label}
-      </h1>
-    </div>
-  );
-};
-
-function UsersCard({ userData }) {
+function UsersCard({ userData, setUserId }) {
   const [selectTab, setSelectTab] = useState("STAFF");
 
   return (
@@ -41,7 +23,14 @@ function UsersCard({ userData }) {
       <div className="mt-8 px-5 flex flex-col items-center">
         {userData.length > 0 &&
           userData.map((user, index) => {
-            return <User key={index} name={user.name} index={index} />;
+            return (
+              <User
+                key={index}
+                name={user.name}
+                userId={index + 1}
+                setUserId={setUserId}
+              />
+            );
           })}
       </div>
     </div>

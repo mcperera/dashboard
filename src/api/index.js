@@ -8,11 +8,17 @@ const api_signIn = async (credentials) => {
 };
 
 const api_getUsers = async (token) => {
-  console.log(token);
   const data = await axios.get(`${rootUrl}/users`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return data;
 };
 
-export { api_signIn, api_getUsers };
+const api_getUserLogs = async (token, userId) => {
+  const data = await axios.get(`${rootUrl}/user/${userId}/logs`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+};
+
+export { api_signIn, api_getUsers, api_getUserLogs };

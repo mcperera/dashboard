@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { api_getUsers } from "../api/auth";
+import { api_getUsers, api_getUserLogs } from "../api/";
 import { signOut } from "../store/actionCreators/user";
-import { NavBar, Header, Layout, UsersCard, Map } from "../components/";
+import { NavBar, Header, Layout, UsersCard, Map, Logs } from "../components/";
 
 function Dashboard() {
   const history = useHistory();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const [userData, setUserData] = useState([]);
+  const [userLogs, setUserLogs] = useState([]);
+  const [userId, setUserId] = useState(1);
 
   const handleSignOut = () => {
     dispatch(signOut(history));
@@ -23,7 +25,13 @@ function Dashboard() {
       .catch((err) => console.log(err));
   }, [user]);
 
-  console.log(userData);
+  useEffect(() => {
+    api_getUserLogs(user.token, userId)
+      .then((res) => {
+        setUserLogs(res.data.logs);
+      })
+      .catch((err) => console.log(err));
+  }, [user, userId]);
 
   return (
     <div className="h-screen flex">
@@ -31,10 +39,10 @@ function Dashboard() {
       <Layout>
         <Header handleSignOut={handleSignOut} />
         <div className="h-5/6 w-full px-2 py-5 flex">
-          <UsersCard userData={userData} />
+          <UsersCard userData={userData} setUserId={setUserId} />
           <div className="w-full flex flex-col">
             <Map />
-            <div className="h-full w-full ml-5 mt-3 flex flex-col shadow-2xl rounded-md"></div>
+            <Logs userLogs={userLogs} />
           </div>
         </div>
       </Layout>
