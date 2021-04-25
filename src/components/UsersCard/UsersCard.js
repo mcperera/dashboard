@@ -25,7 +25,15 @@ const TabItem = ({ label, selectTab, setSelectTab }) => {
 function UsersCard() {
   const { user } = useSelector((state) => state.user);
   const [selectTab, setSelectTab] = useState("STAFF");
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    api_getUsers(user.token)
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [selectTab]);
 
   console.log(userData);
 
@@ -43,6 +51,10 @@ function UsersCard() {
           );
         })}
       </div>
+      {userData &&
+        userData.map((user) => {
+          return <li key={user.id}>{user.name}</li>;
+        })}
     </div>
   );
 }
