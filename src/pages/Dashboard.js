@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signOut } from "../store/actionCreators/user";
 import { NavBar, Header, Layout, UsersCard } from "../components/";
 

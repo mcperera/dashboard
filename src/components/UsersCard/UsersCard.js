@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { api_getUsers } from "../../api/auth";
+import { User } from "../";
 import { tab_line, seleted_tab } from "./UsersCard.module.css";
 
 const tabData = ["STAFF", "EMPLOYEE"];
@@ -33,7 +34,7 @@ function UsersCard() {
         setUserData(res.data);
       })
       .catch((err) => console.log(err));
-  }, [selectTab]);
+  }, [selectTab, user]);
 
   console.log(userData);
 
@@ -51,10 +52,12 @@ function UsersCard() {
           );
         })}
       </div>
-      {userData &&
-        userData.map((user) => {
-          return <li key={user.id}>{user.name}</li>;
-        })}
+      <div className="mt-8 px-5 flex flex-col items-center">
+        {userData &&
+          userData.map((user, index) => {
+            return <User key={index} name={user.name} index={index} />;
+          })}
+      </div>
     </div>
   );
 }
