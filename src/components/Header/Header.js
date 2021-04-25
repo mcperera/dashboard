@@ -10,7 +10,7 @@ function Header({ handleSignOut }) {
       </div>
       <div className="w-6/12 flex items-center justify-end">
         <button
-          className="h-10 px-12 mx-5 rounded border-2 border-gray-500 bg-white hover:bg-gray-100"
+          className="h-10 px-12 mx-5 rounded border-2 border-gray-400 bg-white hover:bg-gray-100"
           onClick={handleSignOut}>
           Message
         </button>
