@@ -15,7 +15,7 @@ function Logs({ userLogs }) {
           return (
             <div
               key={id}
-              className="grid grid-flow-col grid-cols-4 grid-rows-1 gap-4 text-center my-2">
+              className="grid grid-flow-col grid-cols-4 grid-rows-1 gap-4 text-center my-2 py-2 border-2 border-gray-600 rounded-md">
               <span>{date}</span>
               <span>{`${alert_view ? "On" : "Off"}`}</span>
               <span>{time}</span>
