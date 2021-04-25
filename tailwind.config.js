@@ -1,11 +1,15 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx}', './public/index.html'],
+  purge: ["./src/**/*.{js,jsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      transitionProperty: {
+        height: "height",
+      },
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

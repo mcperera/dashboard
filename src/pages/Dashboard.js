@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOut } from "../store/actionCreators/user";
-import { NavBar, Header, Layout, UsersCard } from "../components/";
+import { NavBar, Header, Layout, UsersCard, Map } from "../components/";
 
 function Dashboard() {
   const history = useHistory();
@@ -17,8 +17,12 @@ function Dashboard() {
       <NavBar />
       <Layout>
         <Header handleSignOut={handleSignOut} />
-        <div className="h-5/6 w-full px-2 py-5">
+        <div className="h-5/6 w-full px-2 py-5 flex">
           <UsersCard />
+          <div className="w-full flex flex-col">
+            <Map />
+            <div className="h-full w-full ml-5 mt-3 flex flex-col shadow-2xl rounded-md"></div>
+          </div>
         </div>
       </Layout>
     </div>

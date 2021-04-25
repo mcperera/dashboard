@@ -1,0 +1,9 @@
+.map_img{
+    object-fit: cover;
+}
+
+.arrow_img{
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+}

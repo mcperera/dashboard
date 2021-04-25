@@ -39,7 +39,7 @@ function UsersCard() {
   console.log(userData);
 
   return (
-    <div className="h-full w-4/12 shadow-2xl rounded-md">
+    <div className="h-full w-5/12 mr-5 shadow-2xl rounded-md">
       <div className={`flex`}>
         {tabData.map((label, index) => {
           return (
