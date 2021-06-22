@@ -12,7 +12,7 @@ function Header({ handleSignOut }) {
         <button
           className="h-10 px-12 mx-5 rounded border-2 border-gray-400 bg-white hover:bg-gray-100"
           onClick={handleSignOut}>
-          Message
+          Sign out!
         </button>
         <img src={sosImg} alt="sos_img" className="h-24 w-24 mt-3" />
       </div>

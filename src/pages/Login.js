@@ -53,7 +53,10 @@ function Login({ history }) {
                 onChange={handleChange}
               />
               <div className={`flex justify-between mt-8`}>
-                <p>Forgot password ?</p>
+                <div className="flex flex-col text-xs text-gray-400">
+                  <p>username: achala</p>
+                  <p>password: Test@1234</p>
+                </div>
                 <button className="btn" type="submit">
                   Login
                 </button>
