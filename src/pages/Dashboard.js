@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { api_getUsers, api_getUserLogs } from "../api/";
 import { signOut } from "../store/actionCreators/user";
 import { NavBar, Header, Layout, UsersCard, Map, Logs } from "../components/";
@@ -11,20 +11,20 @@ const userData = [
     name: "Jaison Burnatte",
   },
   {
-    id: 1,
+    id: 2,
     name: "Ali Akbhar",
   },
   {
-    id: 1,
+    id: 3,
     name: "Clifford Shan",
   },
   {
-    id: 1,
+    id: 4,
     name: "Mickey Mouse",
   },
 ];
 
-const userLogs = [
+const logs = [
   {
     id: 1,
     date: "2020-05-06",
@@ -57,6 +57,22 @@ const userLogs = [
     latitude: 51.4904516263179,
     longitude: -3.02734457854324,
   },
+  {
+    id: 5,
+    date: "2020-10-12",
+    alert_view: false,
+    time: "07:00",
+    latitude: 51.490423432,
+    longitude: -1.027344573454324,
+  },
+  {
+    id: 6,
+    date: "2020-1-12",
+    alert_view: true,
+    time: "03:00",
+    latitude: 51.490423432,
+    longitude: -1.027344573454324,
+  },
 ];
 
 function Dashboard() {
@@ -64,7 +80,7 @@ function Dashboard() {
   const dispatch = useDispatch();
   // const { user } = useSelector((state) => state.user);
   // const [userData, setUserData] = useState([]);
-  // const [userLogs, setUserLogs] = useState([]);
+  const [userLogs, setUserLogs] = useState([]);
   const [userId, setUserId] = useState(1);
 
   const handleSignOut = () => {
@@ -87,7 +103,11 @@ function Dashboard() {
   //     .catch((err) => console.log(err));
   // }, [user, userId]);
 
-  console.log("userId-->", userId);
+  useEffect(() => {
+    let newLogs = [...logs];
+    newLogs.length = userId + 1;
+    setUserLogs(newLogs);
+  }, [userId]);
 
   return (
     <div className="h-screen flex">

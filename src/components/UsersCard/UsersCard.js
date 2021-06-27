@@ -25,7 +25,7 @@ function UsersCard({ userData, setUserId }) {
           userData.map((user, index) => {
             return (
               <User
-                key={index}
+                key={user.id}
                 name={user.name}
                 userId={index + 1}
                 setUserId={setUserId}
