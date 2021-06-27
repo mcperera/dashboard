@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { api_getUsers, api_getUserLogs } from "../api/";
+// import { api_getUsers, api_getUserLogs } from "../api/";
 import { signOut } from "../store/actionCreators/user";
 import { NavBar, Header, Layout, UsersCard, Map, Logs } from "../components/";
 
@@ -62,7 +62,7 @@ const userLogs = [
 function Dashboard() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
   // const [userData, setUserData] = useState([]);
   // const [userLogs, setUserLogs] = useState([]);
   const [userId, setUserId] = useState(1);
@@ -86,6 +86,8 @@ function Dashboard() {
   //     })
   //     .catch((err) => console.log(err));
   // }, [user, userId]);
+
+  console.log("userId-->", userId);
 
   return (
     <div className="h-screen flex">
